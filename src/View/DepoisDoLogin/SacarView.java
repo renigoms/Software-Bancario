@@ -38,9 +38,9 @@ public class SacarView {
 
         //        SALDO DISPONÍVEL PARA SAQUE
 
-        dispSaldo = "Saldo disponível para ser sacado: R$"+ '\t' + cliente.getconta().getSaldo();
-        dispSaldoLabel = utilidades.getLabels(dispSaldo, Color.blue, 50,110,250,25);
-        dispSaldoLabel.setFont(new Font("Serif",Font.BOLD, 16));
+        dispSaldo = "<html>Saldo disponível para ser sacado:<br><center>R$ %s</center></html>".formatted(cliente.getconta().getSaldo());
+        dispSaldoLabel = utilidades.getLabels(dispSaldo, Color.blue, 50,110,250,100);
+        dispSaldoLabel.setFont(new Font("Dialog",Font.BOLD, 14));
         painelSacar.add(dispSaldoLabel);
 
 
@@ -53,16 +53,16 @@ public class SacarView {
         mensagem.setFont(new Font("Serif",Font.ITALIC, 16));
         painelSacar.add(mensagem);
 //      ÁREA DE INPUTS
-        saldoLabel = utilidades.getLabels("Saldo", null,80,175,90,90);
+        saldoLabel = utilidades.getLabels("Saldo", null,105,170,90,90);
         saldoLabel.setFont(new Font("Serif", Font.PLAIN, 23));
         painelSacar.add(saldoLabel);
-        saldoText = utilidades.getTextField(5,150,210,90,25);
+        saldoText = utilidades.getTextField(5,165,205,90,25);
         painelSacar.add(saldoText);
 
 //        BOTÃO SACAR
 
         sacarButton = new JButton("Sacar");
-        sacarButton.setBounds(105,250,100,30);
+        sacarButton.setBounds(130,250,100,30);
         sacarButton.setFont(new Font("Serif", Font.BOLD, 16));
         painelSacar.add(sacarButton);
 
