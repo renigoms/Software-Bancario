@@ -92,7 +92,7 @@ public class SistemaBancoView extends TelaView {
         cardMenstre.add(painelRemover, "remover");
 
 //        PAINEL SACAR
-        painelSacar = SacarView.getPainelSacar(null, 330,314, clienteModel);
+        painelSacar = SacarView.getPainelSacar(null, 330,314, clienteModel, this);
         cardMenstre.add(painelSacar, "sacar");
 
 //        SHOW

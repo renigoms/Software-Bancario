@@ -5,8 +5,13 @@ import View.UtilidadesView;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.ParseException;
 
 public class SacarView {
+
+    public static SistemaBancoView telaSistema;
 
     public static JPanel painelSacar;
 
@@ -20,7 +25,8 @@ public class SacarView {
 
     static ClienteModel cliente;
 
-    public static JPanel getPainelSacar(LayoutManager layout,int x, int y, ClienteModel cli) {
+    public static JPanel getPainelSacar(LayoutManager layout,int x, int y, ClienteModel cli, SistemaBancoView sistema) {
+        telaSistema = sistema;
         cliente = cli;
         setPainelSacar(layout,x,y);
         return painelSacar;
@@ -64,6 +70,21 @@ public class SacarView {
         sacarButton = new JButton("Sacar");
         sacarButton.setBounds(130,250,100,30);
         sacarButton.setFont(new Font("Serif", Font.BOLD, 16));
+        sacarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Double saldoConvert = Double.parseDouble(saldoText.getText());
+                cliente.getconta().sacar(saldoConvert);
+                JOptionPane.showMessageDialog(null, "O valor de R$ %s foi sacado com sucesso."
+                        .formatted(saldoText.getText()), "Informação",JOptionPane.INFORMATION_MESSAGE);
+                telaSistema.dispose();
+                try {
+                    new SistemaBancoView(cliente);
+                } catch (ParseException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
         painelSacar.add(sacarButton);
 
 

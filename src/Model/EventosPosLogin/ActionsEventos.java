@@ -10,7 +10,6 @@ import java.awt.event.ActionListener;
 public class ActionsEventos implements ActionListener {
     SistemaBancoView telaSistema;
 
-    RemoverUsuario telaRemover;
 
 
     public ActionsEventos(SistemaBancoView telaSistema) {
