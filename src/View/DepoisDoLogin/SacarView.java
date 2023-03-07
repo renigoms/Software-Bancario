@@ -17,7 +17,7 @@ public class SacarView {
 
     static String dispSaldo;
 
-    static  JLabel imagem, tituloLabel, mensagem, saldoLabel, dispSaldoLabel;
+    static  JLabel imagem, tituloLabel, mensagem, saldoLabel, dispSaldoLabel, imagemDecorativa;
 
     static JTextField saldoText;
 
@@ -45,7 +45,7 @@ public class SacarView {
         //        SALDO DISPONÍVEL PARA SAQUE
 
         dispSaldo = "<html>Saldo disponível para ser sacado:<br><center>R$ %s</center></html>".formatted(cliente.getconta().getSaldo());
-        dispSaldoLabel = utilidades.getLabels(dispSaldo, Color.blue, 50,110,250,100);
+        dispSaldoLabel = utilidades.getLabels(dispSaldo, Color.blue, 50,80,250,100);
         dispSaldoLabel.setFont(new Font("Dialog",Font.BOLD, 14));
         painelSacar.add(dispSaldoLabel);
 
@@ -68,7 +68,7 @@ public class SacarView {
 //        BOTÃO SACAR
 
         sacarButton = new JButton("Sacar");
-        sacarButton.setBounds(130,250,100,30);
+        sacarButton.setBounds(130,265,100,30);
         sacarButton.setFont(new Font("Serif", Font.BOLD, 16));
         sacarButton.addActionListener(new ActionListener() {
             @Override
@@ -86,6 +86,12 @@ public class SacarView {
             }
         });
         painelSacar.add(sacarButton);
+
+        //        IMAGEM DECORATIVA DE DINHEIRO
+        imagemDecorativa = new JLabel(new ImageIcon("2534191.png"));
+        imagemDecorativa.setBounds(70,340,165,120);
+        painelSacar.add(imagemDecorativa);
+
 
 
 
