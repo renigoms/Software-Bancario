@@ -22,12 +22,16 @@ public class EventosPosLoginController {
         this.button = button;
     }
 
+    public EventosPosLoginController(JButton button) {
+        this.button = button;
+    }
+
     public KeyEventos keyEventos(){
         return new KeyEventos(telaSistema);
     }
 
     public FocusEventos focusEventos(){
-        return new FocusEventos(telaSistema, button);
+        return new FocusEventos( button);
     }
 
     public ActionsEventos actionsEventos(){

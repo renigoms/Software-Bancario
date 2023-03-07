@@ -11,7 +11,7 @@ public class FocusEventos extends FocusAdapter {
     SistemaBancoView telaSistema;
     JButton button;
 
-    public FocusEventos(SistemaBancoView telaSistema, JButton button) {
+    public FocusEventos( JButton button) {
         this.telaSistema = telaSistema;
         this.button = button;
     }

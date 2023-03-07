@@ -1,12 +1,14 @@
 package View.DepoisDoLogin;
 
+import Controller.EventosPosLoginController;
 import Model.ClienteModel;
+import Model.EventosPosLogin.FocusEventos;
+import Model.Utilidadesv2;
 import View.UtilidadesView;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.text.ParseException;
 
 public class SacarView {
@@ -32,9 +34,10 @@ public class SacarView {
         return painelSacar;
     }
 
-    private static void setPainelSacar(LayoutManager layout,int x, int y) {
+    private static void setPainelSacar(LayoutManager layout, int x, int y) {
         UtilidadesView utilidades = new UtilidadesView();
         painelSacar = utilidades.getPainel(layout,x,y);
+        painelSacar.addMouseListener(new MouseEventos());
 
 //        Logo
 
@@ -59,10 +62,11 @@ public class SacarView {
         mensagem.setFont(new Font("Serif",Font.ITALIC, 16));
         painelSacar.add(mensagem);
 //      ÁREA DE INPUTS
-        saldoLabel = utilidades.getLabels("Saldo", null,105,170,90,90);
+        saldoLabel = utilidades.getLabels("Saldo", null,105,160,90,90);
         saldoLabel.setFont(new Font("Serif", Font.PLAIN, 23));
         painelSacar.add(saldoLabel);
-        saldoText = utilidades.getTextField(5,165,205,90,25);
+        saldoText = utilidades.getTextField(5,165,195,90,25);
+        saldoText.addKeyListener(new KeyEventos());
         painelSacar.add(saldoText);
 
 //        BOTÃO SACAR
@@ -70,19 +74,33 @@ public class SacarView {
         sacarButton = new JButton("Sacar");
         sacarButton.setBounds(130,265,100,30);
         sacarButton.setFont(new Font("Serif", Font.BOLD, 16));
+        sacarButton.addKeyListener(new KeyEventos());
+        sacarButton.addMouseListener(new MouseEventos());
+        sacarButton.addFocusListener(new EventosPosLoginController(sacarButton).focusEventos());
         sacarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Double saldoConvert = Double.parseDouble(saldoText.getText());
-                cliente.getconta().sacar(saldoConvert);
-                JOptionPane.showMessageDialog(null, "O valor de R$ %s foi sacado com sucesso."
-                        .formatted(saldoText.getText()), "Informação",JOptionPane.INFORMATION_MESSAGE);
-                telaSistema.dispose();
-                try {
-                    new SistemaBancoView(cliente);
-                } catch (ParseException ex) {
-                    throw new RuntimeException(ex);
+                if (saldoText.getText().equals("")){
+                    JOptionPane.showMessageDialog(null,"Você não disse o quanto quer sacar!", "Aviso"
+                    , JOptionPane.WARNING_MESSAGE);
+                }else{
+                    Double saldoConvert = Double.parseDouble(saldoText.getText());
+                    if(cliente.getconta().sacar(saldoConvert)){
+                        JOptionPane.showMessageDialog(null, "O valor de R$ %s foi sacado com sucesso."
+                                .formatted(saldoText.getText()), "Informação",JOptionPane.INFORMATION_MESSAGE);
+                        telaSistema.dispose();
+                        try {
+                            new SistemaBancoView(cliente);
+                        } catch (ParseException ex) {
+                            throw new RuntimeException(ex);
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Você não possui esse valor em sua conta!!", "ATENÇÃO",
+                                JOptionPane.ERROR_MESSAGE);
+                    }
+
                 }
+
             }
         });
         painelSacar.add(sacarButton);
@@ -91,12 +109,42 @@ public class SacarView {
         imagemDecorativa = new JLabel(new ImageIcon("2534191.png"));
         imagemDecorativa.setBounds(70,340,165,120);
         painelSacar.add(imagemDecorativa);
+    }
+    private static class KeyEventos extends KeyAdapter {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER){
+                Utilidadesv2.passarFocu(saldoText, sacarButton);
+                Utilidadesv2.darUmCLick(sacarButton,sacarButton);
+            }
 
+            if (e.getKeyCode() == KeyEvent.VK_DOWN){
+                Utilidadesv2.passarFocu(saldoText,sacarButton);
 
+            }
+            if (e.getKeyCode() == KeyEvent.VK_UP){
+                Utilidadesv2.passarFocu(sacarButton,saldoText);
+            }
 
+        }
+    }
 
+    private static class MouseEventos extends MouseAdapter {
+        @Override
+        public void mouseExited(MouseEvent e) {
+            if(e.getSource() == painelSacar){
+                saldoText.requestFocus();
+            }
+            if (e.getSource() == sacarButton){
+                sacarButton.setForeground(Color.black);
+            }
+        }
 
-
-
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            if(e.getSource() == sacarButton){
+                sacarButton.setForeground(Color.RED);
+            }
+        }
     }
 }
