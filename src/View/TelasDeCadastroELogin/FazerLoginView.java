@@ -10,6 +10,8 @@ import View.UtilidadesView;
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.text.ParseException;
 
 
@@ -101,5 +103,11 @@ public class FazerLoginView extends TelaView {
 
 
         setVisible(true);
+    }
+    private class EventosMouse extends MouseAdapter {
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            System.out.println("ola mundo");
+        }
     }
 }
