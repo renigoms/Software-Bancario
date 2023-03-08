@@ -37,7 +37,7 @@ public class FazerLoginView extends TelaView {
 //        getPainel2()
         setPainel2(null, 350,100);
 
-//        COMPONENTES DO getPainel1()
+//        COMPONENTES DO getPainel2()
 
 //        LABELS
 
@@ -51,6 +51,7 @@ public class FazerLoginView extends TelaView {
         loginText = new JFormattedTextField(new MaskFormatter("###.###.###-##"));
         loginText.requestFocus();
         loginText.addKeyListener(new EventosController(this, null, null).eventoLogin());
+        loginText.addMouseListener(new EventosMouse());
         loginText.setColumns(30);
         loginText.setBounds(120,8,160,25);
 
@@ -86,17 +87,23 @@ public class FazerLoginView extends TelaView {
 //        getPainel3()
         setPainel3(new FlowLayout(), 200,50);
         sairButton = new JButton("Sair");
+        sairButton.addMouseListener(new EventosMouse());
+        sairButton.setForeground(Color.black);
         sairButton.addActionListener(new EventosController(this, null, null).eventoLogin());
         sairButton.addKeyListener(new EventosController(this, null, null).eventoLogin());
         getPainel3().add(sairButton);
         cadastrarButton = new JButton("Criar nova conta");
+        cadastrarButton.setForeground(Color.black);
+        cadastrarButton.addMouseListener(new EventosMouse());
         cadastrarButton.addKeyListener(new EventosController(this, null, null).eventoLogin());
         cadastrarButton.addActionListener(new EventosController(this, null, null).eventoLogin());
         getPainel3().add(cadastrarButton);
 
         entrarButton = new JButton("Entrar");
+        entrarButton.setForeground(Color.black);
         entrarButton.addKeyListener(new EventosController(this, null, null).eventoLogin());
         entrarButton.addActionListener(new EventosController(this, null, null).eventoLogin());
+        entrarButton.addMouseListener(new EventosMouse());
         getPainel3().add(entrarButton);
 
 
@@ -106,8 +113,34 @@ public class FazerLoginView extends TelaView {
     }
     private class EventosMouse extends MouseAdapter {
         @Override
-        public void mouseEntered(MouseEvent e) {
-            System.out.println("ola mundo");
+        public void mouseEntered(MouseEvent e) {// de entrada
+            if (e.getSource() == loginText) {
+                loginText.requestFocus();
+            }
+            if (e.getSource() == sairButton){
+                sairButton.setForeground(Color.RED);
+            } else if (e.getSource() == cadastrarButton) {
+                cadastrarButton.setForeground(Color.RED);
+
+            } else if (e.getSource() == entrarButton) {
+                entrarButton.setForeground(Color.RED);
+
+            }
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {// de saida
+            if (e.getSource() == sairButton){
+                sairButton.setForeground(Color.black);
+            } else if (e.getSource() == cadastrarButton) {
+                cadastrarButton.setForeground(Color.BLACK);
+
+            } else if (e.getSource() == entrarButton) {
+                entrarButton.setForeground(Color.black);
+
+            }
+
         }
     }
 }
