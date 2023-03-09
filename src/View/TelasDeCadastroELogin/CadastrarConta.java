@@ -2,11 +2,14 @@ package View.TelasDeCadastroELogin;
 
 import Controller.ClienteController;
 import Controller.EventosController;
+import Controller.EventosPosLoginController;
 import View.TelaView;
 import View.UtilidadesView;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.text.ParseException;
 
 public class CadastrarConta extends TelaView {
@@ -94,14 +97,20 @@ public class CadastrarConta extends TelaView {
 //        botoes
 
         cancelarButton = new JButton("Cancelar");
+        cancelarButton.setForeground(Color.black);
         cancelarButton.setPreferredSize(new Dimension(140,30));
         cancelarButton.addActionListener(new EventosController(null, null, this).eventoConta());
+        cancelarButton.addMouseListener(new EventosController(cancelarButton).eventosMouse());
         cancelarButton.addKeyListener(new EventosController(null,null,this).eventoConta());
+        cancelarButton.addFocusListener(new EventosPosLoginController(cancelarButton).focusEventos());
         getPainel3().add(cancelarButton);
         salvarButton = new JButton("Salvar");
+        salvarButton.setForeground(Color.black);
         salvarButton.setPreferredSize(new Dimension(140,30));
         salvarButton.addActionListener(new EventosController(null, telaCliente, this,cliente).eventoConta());
         salvarButton.addKeyListener(new EventosController(null,null,this).eventoConta());
+        salvarButton.addMouseListener(new EventosController(salvarButton).eventosMouse());
+        salvarButton.addFocusListener(new EventosPosLoginController(salvarButton).focusEventos());
         getPainel3().add(salvarButton);
 //      SHOW
         setVisible(true);

@@ -1,6 +1,7 @@
 package View.DepoisDoLogin;
 
 import Controller.DadosController;
+import Controller.EventosController;
 import Model.ClienteModel;
 import Model.Utilidadesv2;
 import View.UtilidadesView;
@@ -71,6 +72,7 @@ public class RemoverUsuario{
         simButton = new JButton("Excluir");
         simButton.setBounds(170,220,90,30);
 //        TRATAMENTO DE EVENTO
+        simButton.addMouseListener(new EventosController(simButton).eventosMouse());
         simButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -99,6 +101,7 @@ public class RemoverUsuario{
             }
         });
         cancelarButton.addKeyListener(new EventoKeyRemover());
+        cancelarButton.addMouseListener(new EventosController(cancelarButton).eventosMouse());
         painelRemover.add(cancelarButton);
 
 

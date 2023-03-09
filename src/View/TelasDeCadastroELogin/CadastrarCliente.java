@@ -1,6 +1,9 @@
 package View.TelasDeCadastroELogin;
 
 import Controller.EventosController;
+import Controller.EventosPosLoginController;
+import Model.Eventos.EventosMouse;
+import Model.EventosPosLogin.FocusEventos;
 import View.TelaView;
 import View.UtilidadesView;
 
@@ -108,11 +111,15 @@ public class CadastrarCliente extends TelaView {
         cancelarButton.setPreferredSize(new Dimension(140,30));
         cancelarButton.addActionListener(new EventosController(null, this, null).eventoCliente());
         cancelarButton.addKeyListener(new EventosController(null,this,null).eventoCliente());
+        cancelarButton.addFocusListener(new EventosPosLoginController(cancelarButton).focusEventos());
+        cancelarButton.addMouseListener(new EventosController(cancelarButton).eventosMouse());
         getPainel3().add(cancelarButton);
         salvarButton = new JButton("Próximo");
         salvarButton.setPreferredSize(new Dimension(140,30));
         salvarButton.addActionListener(new EventosController(null, this, null).eventoCliente());
         salvarButton.addKeyListener(new EventosController(null,this,null).eventoCliente());
+        salvarButton.addFocusListener(new EventosPosLoginController(salvarButton).focusEventos());
+        salvarButton.addMouseListener(new EventosController(salvarButton).eventosMouse());
         getPainel3().add(salvarButton);
 //      SHOW
         setVisible(true);
@@ -121,5 +128,7 @@ public class CadastrarCliente extends TelaView {
 
 
     }
+
+
 
 }

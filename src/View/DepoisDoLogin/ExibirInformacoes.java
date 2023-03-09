@@ -1,5 +1,6 @@
 package View.DepoisDoLogin;
 
+import Controller.EventosController;
 import Model.ClienteModel;
 import View.UtilidadesView;
 
@@ -127,6 +128,7 @@ public class ExibirInformacoes {
 
         contaButton = new JButton("Informações da Conta");
         contaButton.setBounds(110,370,190,35);
+        contaButton.addMouseListener(new EventosController(contaButton).eventosMouse());
         contaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

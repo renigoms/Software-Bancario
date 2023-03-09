@@ -41,6 +41,7 @@ public class SistemaBancoView extends TelaView {
         //        BOTÃO ATUALIZAR: EVENTOS E REQUISIÇÃO DE FOCO
         atualizarButton.addKeyListener(new EventosPosLoginController(this).keyEventos());
         atualizarButton.addFocusListener(new EventosPosLoginController(this, atualizarButton).focusEventos());
+        atualizarButton.addMouseListener(new EventosController(atualizarButton).eventosMouse());
         atualizarButton.requestFocus();
 
 //      BOTÃO REMOVER: CRIAÇÃO E ADIÇÃO
@@ -51,6 +52,7 @@ public class SistemaBancoView extends TelaView {
         removerButton.setFont(new Font("Arial", Font.BOLD, 16));
         //      BOTÃO REMOVER: EVENTOS
         removerButton.addKeyListener(new EventosPosLoginController(this).keyEventos());
+        removerButton.addMouseListener(new EventosController(removerButton).eventosMouse());
         removerButton.addFocusListener(new EventosPosLoginController(this, removerButton).focusEventos());
         removerButton.addActionListener(new EventosPosLoginController(this, removerButton).actionsEventos());
 
@@ -63,6 +65,7 @@ public class SistemaBancoView extends TelaView {
         //       BOTÃO ADICIONAR: EVENTOS
         adicionarButton.addKeyListener(new EventosPosLoginController(this).keyEventos());
         adicionarButton.addFocusListener(new EventosPosLoginController(this, adicionarButton).focusEventos());
+        adicionarButton.addMouseListener(new EventosController(adicionarButton).eventosMouse());
         adicionarButton.addActionListener(new EventosPosLoginController(this, adicionarButton).actionsEventos());
 //      BOTÃO EXIBIRDADOS: CRIAÇÃO E ADIÇÃO
         exibirDadosButton = new JButton("Exibir Dados");
@@ -72,6 +75,7 @@ public class SistemaBancoView extends TelaView {
         exibirDadosButton.setFont(new Font("Arial", Font.BOLD, 16));
         //      BOTÃO EXIBIRDADOS: EVENTOS
         exibirDadosButton.addKeyListener(new EventosPosLoginController(this).keyEventos());
+        exibirDadosButton.addMouseListener(new EventosController(exibirDadosButton).eventosMouse());
         exibirDadosButton.addFocusListener(new EventosPosLoginController(this, exibirDadosButton).focusEventos());
         exibirDadosButton.addActionListener(new EventosPosLoginController(this, exibirDadosButton).actionsEventos());
 //    Painel2
@@ -99,14 +103,6 @@ public class SistemaBancoView extends TelaView {
         add(cardMenstre, BorderLayout.CENTER);
 
 
-
-
-
-
-
-
-
-
 //    Painel3
 
 //      DEFINIÇÕES
@@ -118,6 +114,7 @@ public class SistemaBancoView extends TelaView {
         transferirButton.setFont(new Font("Arial", Font.BOLD, 16));
 //         BOTÃO TRANSFERÊNCIA: EVENTOS
         transferirButton.addKeyListener(new EventosPosLoginController(this).keyEventos());
+        transferirButton.addMouseListener(new EventosController(transferirButton).eventosMouse());
         transferirButton.addFocusListener(new EventosPosLoginController(this, transferirButton).focusEventos());
         //         BOTÃO TRANSFERÊNCIA: ADIÇÃO
         getPainel3().add(transferirButton);
@@ -130,6 +127,7 @@ public class SistemaBancoView extends TelaView {
         extratoButton.setFont(new Font("Arial", Font.BOLD, 16));
         //         BOTÃO EXTRATO: EVENTOS
         extratoButton.addKeyListener(new EventosPosLoginController(this).keyEventos());
+        extratoButton.addMouseListener(new EventosController(extratoButton).eventosMouse());
         extratoButton.addFocusListener(new EventosPosLoginController(this, extratoButton).focusEventos());
         //         BOTÃO EXTRATO: ADIÇÃO
         getPainel3().add(extratoButton);
@@ -142,6 +140,7 @@ public class SistemaBancoView extends TelaView {
         sacarButton.setFont(new Font("Arial", Font.BOLD, 16));
         //         BOTÃO SACAR: EVENTOS
         sacarButton.addKeyListener(new EventosPosLoginController(this).keyEventos());
+        sacarButton.addMouseListener(new EventosController(sacarButton).eventosMouse());
         sacarButton.addFocusListener(new EventosPosLoginController(this, sacarButton).focusEventos());
         sacarButton.addActionListener(new EventosPosLoginController(this).actionsEventos());
         //         BOTÃO SACAR: ADIÇÃO
@@ -156,6 +155,7 @@ public class SistemaBancoView extends TelaView {
 //        BOTÃO SAIR: EVENTOS
         sairButtton.addKeyListener(new EventosPosLoginController(this).keyEventos());
         sairButtton.addFocusListener(new EventosPosLoginController(this, sairButtton).focusEventos());
+        sairButtton.addMouseListener(new EventosController(sairButtton).eventosMouse());
         sairButtton.addActionListener(new EventosPosLoginController(this).actionsEventos());
 //        BOTÃO SAIR: ADIÇÃO
         getPainel3().add(sairButtton);
