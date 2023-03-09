@@ -3,6 +3,7 @@ package View.TelasDeCadastroELogin;
 import Controller.DadosController;
 import Controller.EventosController;
 
+import Controller.EventosPosLoginController;
 import Model.BaseDeDadosModel;
 import View.TelaView;
 import View.UtilidadesView;
@@ -90,57 +91,37 @@ public class FazerLoginView extends TelaView {
         sairButton.addMouseListener(new EventosMouse());
         sairButton.setForeground(Color.black);
         sairButton.addActionListener(new EventosController(this, null, null).eventoLogin());
+        sairButton.addMouseListener(new EventosController(sairButton).eventosMouse());
         sairButton.addKeyListener(new EventosController(this, null, null).eventoLogin());
+        sairButton.addFocusListener(new EventosPosLoginController(sairButton).focusEventos());
         getPainel3().add(sairButton);
         cadastrarButton = new JButton("Criar nova conta");
         cadastrarButton.setForeground(Color.black);
         cadastrarButton.addMouseListener(new EventosMouse());
         cadastrarButton.addKeyListener(new EventosController(this, null, null).eventoLogin());
+        cadastrarButton.addMouseListener(new EventosController(cadastrarButton).eventosMouse());
         cadastrarButton.addActionListener(new EventosController(this, null, null).eventoLogin());
+        cadastrarButton.addFocusListener(new EventosPosLoginController(cadastrarButton).focusEventos());
         getPainel3().add(cadastrarButton);
 
         entrarButton = new JButton("Entrar");
         entrarButton.setForeground(Color.black);
         entrarButton.addKeyListener(new EventosController(this, null, null).eventoLogin());
         entrarButton.addActionListener(new EventosController(this, null, null).eventoLogin());
-        entrarButton.addMouseListener(new EventosMouse());
+        entrarButton.addFocusListener(new EventosPosLoginController(entrarButton).focusEventos());
+        entrarButton.addMouseListener(new EventosController(entrarButton).eventosMouse());
         getPainel3().add(entrarButton);
-
-
-
-
         setVisible(true);
     }
-    private class EventosMouse extends MouseAdapter {
+
+    private class EventosMouse extends MouseAdapter{
         @Override
-        public void mouseEntered(MouseEvent e) {// de entrada
-            if (e.getSource() == loginText) {
+        public void mouseEntered(MouseEvent e) {
+            if(e.getSource() == loginText){
                 loginText.requestFocus();
             }
-            if (e.getSource() == sairButton){
-                sairButton.setForeground(Color.RED);
-            } else if (e.getSource() == cadastrarButton) {
-                cadastrarButton.setForeground(Color.RED);
-
-            } else if (e.getSource() == entrarButton) {
-                entrarButton.setForeground(Color.RED);
-
-            }
-
         }
 
-        @Override
-        public void mouseExited(MouseEvent e) {// de saida
-            if (e.getSource() == sairButton){
-                sairButton.setForeground(Color.black);
-            } else if (e.getSource() == cadastrarButton) {
-                cadastrarButton.setForeground(Color.BLACK);
 
-            } else if (e.getSource() == entrarButton) {
-                entrarButton.setForeground(Color.black);
-
-            }
-
-        }
     }
 }

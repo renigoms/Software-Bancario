@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b45fd835-5396-4412-bd85-30b0f979da5b" name="Changes" comment="teste">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="b45fd835-5396-4412-bd85-30b0f979da5b" name="Changes" comment="desingBotoes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SistemaDeBanco/View/TelasDeCadastroELogin/FazerLoginView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SistemaDeBanco/View/TelasDeCadastroELogin/FazerLoginView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/EventosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EventosController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/DepoisDoLogin/SistemaBancoView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/DepoisDoLogin/SistemaBancoView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/TelasDeCadastroELogin/CadastrarCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/TelasDeCadastroELogin/CadastrarCliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/TelasDeCadastroELogin/CadastrarConta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/TelasDeCadastroELogin/CadastrarConta.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/TelasDeCadastroELogin/FazerLoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/TelasDeCadastroELogin/FazerLoginView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -128,6 +130,7 @@
     <MESSAGE value="sacarOtimizado" />
     <MESSAGE value="interacaoBotoes" />
     <MESSAGE value="teste" />
-    <option name="LAST_COMMIT_MESSAGE" value="teste" />
+    <MESSAGE value="desingBotoes" />
+    <option name="LAST_COMMIT_MESSAGE" value="desingBotoes" />
   </component>
 </project>
