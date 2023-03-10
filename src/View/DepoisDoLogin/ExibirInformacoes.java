@@ -1,13 +1,17 @@
 package View.DepoisDoLogin;
 
 import Controller.EventosController;
+import Controller.EventosPosLoginController;
 import Model.ClienteModel;
+import Model.Utilidadesv2;
 import View.UtilidadesView;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.text.ParseException;
 
 public class ExibirInformacoes {
@@ -129,6 +133,8 @@ public class ExibirInformacoes {
         contaButton = new JButton("Informações da Conta");
         contaButton.setBounds(110,370,190,35);
         contaButton.addMouseListener(new EventosController(contaButton).eventosMouse());
+        contaButton.addFocusListener(new EventosPosLoginController(contaButton).focusEventos());
+        contaButton.addKeyListener(new EventosKey());
         contaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -152,5 +158,16 @@ public class ExibirInformacoes {
         painelExibirInformacoes.add(telefoneText);
         painelExibirInformacoes.add(contaButton);
 
+    }
+    private static class EventosKey extends KeyAdapter {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_LEFT){
+                Utilidadesv2.passarFocu( contaButton, telaSistema.exibirDadosButton);
+            }
+            if (e.getKeyCode() == KeyEvent.VK_ENTER){
+                Utilidadesv2.darUmCLick(contaButton, contaButton);
+            }
+        }
     }
 }
