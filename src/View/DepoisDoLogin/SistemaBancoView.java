@@ -1,10 +1,8 @@
 package View.DepoisDoLogin;
 
-import Controller.ClienteController;
 import Controller.EventosController;
 import Controller.EventosPosLoginController;
 import Model.ClienteModel;
-import Model.Utilidadesv2;
 import View.TelaView;
 import View.UtilidadesView;
 

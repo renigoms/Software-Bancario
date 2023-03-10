@@ -2,7 +2,9 @@ package View.DepoisDoLogin;
 
 import Controller.DadosController;
 import Controller.EventosController;
+import Controller.EventosPosLoginController;
 import Model.ClienteModel;
+import Model.EventosPosLogin.FocusEventos;
 import Model.Utilidadesv2;
 import View.UtilidadesView;
 
@@ -33,6 +35,7 @@ public class RemoverUsuario{
         sistemaBancoView = telaSitema;
         return painelRemover;
     }
+
     //        EVENTO KEYADAPTER
     static class EventoKeyRemover extends KeyAdapter {
         @Override
@@ -43,9 +46,11 @@ public class RemoverUsuario{
             }
             if (e.getKeyCode() == KeyEvent.VK_RIGHT){
                 Utilidadesv2.passarFocu(cancelarButton, simButton);
+                Utilidadesv2.passarFocu(simButton, sistemaBancoView.sacarButton);
             }
             if(e.getKeyCode() == KeyEvent.VK_LEFT){
                 Utilidadesv2.passarFocu(simButton, cancelarButton);
+                Utilidadesv2.passarFocu(cancelarButton, sistemaBancoView.removerButton);
             }
         }
     }
@@ -73,6 +78,7 @@ public class RemoverUsuario{
         simButton.setBounds(170,220,90,30);
 //        TRATAMENTO DE EVENTO
         simButton.addMouseListener(new EventosController(simButton).eventosMouse());
+        simButton.addFocusListener(new EventosPosLoginController(simButton).focusEventos());
         simButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -93,6 +99,7 @@ public class RemoverUsuario{
         cancelarButton = new JButton("Cancelar");
         cancelarButton.setBounds(70,220,90,30);
         //        TRATAMENTO DE EVENTO
+        cancelarButton.addFocusListener(new EventosPosLoginController(cancelarButton).focusEventos());
         cancelarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

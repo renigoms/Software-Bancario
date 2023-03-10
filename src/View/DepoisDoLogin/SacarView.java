@@ -2,7 +2,6 @@ package View.DepoisDoLogin;
 
 import Controller.EventosPosLoginController;
 import Model.ClienteModel;
-import Model.EventosPosLogin.FocusEventos;
 import Model.Utilidadesv2;
 import View.UtilidadesView;
 
@@ -21,9 +20,9 @@ public class SacarView {
 
     static  JLabel imagem, tituloLabel, mensagem, saldoLabel, dispSaldoLabel, imagemDecorativa;
 
-    static JTextField saldoText;
+    public static JTextField saldoText;
 
-    static JButton sacarButton;
+    public static JButton sacarButton;
 
     static ClienteModel cliente;
 
@@ -124,6 +123,9 @@ public class SacarView {
             }
             if (e.getKeyCode() == KeyEvent.VK_UP){
                 Utilidadesv2.passarFocu(sacarButton,saldoText);
+            }
+            if(e.getKeyCode() == KeyEvent.VK_RIGHT){
+                Utilidadesv2.passarFocu(sacarButton, telaSistema.sacarButton);
             }
 
         }
