@@ -2,6 +2,7 @@ package Model;
 
 import Controller.ClienteController;
 import Controller.ContaController;
+import Controller.DadosController;
 
 import java.util.ArrayList;
 
@@ -11,7 +12,20 @@ public class BaseDeDadosModel {
 
     public static void criarBase() {
         DadosDoBanco = new ArrayList<>();
+        inicializacaoTeste();
 
+    }
+
+    private static void inicializacaoTeste(){
+        // CRIAR CONTA
+        ContaController conta = new ContaController("12345-6", "1234-5", "Poupança",
+                1000.0);
+        // CRIAR CLIENTE
+        ClienteController cliente = new ClienteController("TesteDePrograma", "111.111.111-11", "teste.doPrograma@teste.com",
+                "(99)99999-9999", "Rua testando esse a aplicação.");
+        cliente.getCliente().setconta(conta.getConta());
+//        ADICIONANDO A BASE
+        DadosController.adcionarCliente(cliente);
     }
 
     public static void adicionarCliente(ClienteController cliente) {
