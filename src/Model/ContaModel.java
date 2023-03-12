@@ -55,4 +55,34 @@ public class ContaModel {
                 setSaldo(getSaldo()+valor);
                 return true;
         }
+
+        /**
+         * COMO AQUI DEVE R OCORRER ALGO RÁPIDO TANTO
+         * O RENDIMNTO QUANTO OS JUROS CORRIDOS SERÃO INSTANEOS
+         *<p></p>
+         * NORMALMENTE OS JUROS DE UM BANCO CORREM OU RENDER SOBRE UMA CERTA TAXA AO MÊS
+         * DURANTE 1 ANO
+         * <p></p>
+         * NESSE CASO, PARA UMA MELHOR VISUALIZAÇÃO ISSO OCORRERA INSTANTANEAMENTE
+         * @param taxa TAXA DE RENDIMENTO AO MÊS.
+         */
+        public double renderJuros(double taxa){
+                setSaldo(getSaldo() + (taxa * 12));
+                return getSaldo();
+        }
+
+        /**
+         * * COMO AQUI DEVE R OCORRER ALGO RÁPIDO TANTO
+         *          * O RENDIMNTO QUANTO OS JUROS CORRIDOS SERÃO INSTANEOS
+         *          *<p></p>
+         *          * NORMALMENTE OS JUROS DE UM BANCO CORREM OU RENDER SOBRE UMA CERTA TAXA AO MÊS
+         *          * DURANTE 1 ANO
+         *          * <p></p>
+         *          * NESSE CASO, PARA UMA MELHOR VISUALIZAÇÃO ISSO OCORRERA INSTANTANEAMENTE
+         * @param taxa TAXA COBRADA AO MÊS.
+         */
+        public double correrJuros(double taxa){
+                setSaldo(getSaldo() - (taxa * 12));
+                return getSaldo();
+        }
 }
