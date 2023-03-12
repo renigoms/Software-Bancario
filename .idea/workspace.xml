@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b45fd835-5396-4412-bd85-30b0f979da5b" name="Changes" comment="desingBotoesAtualizacoes">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/BaseDeDadosModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/BaseDeDadosModel.java" afterDir="false" />
+    <list default="true" id="b45fd835-5396-4412-bd85-30b0f979da5b" name="Changes" comment="automatizandoTeste">
+      <change beforePath="$PROJECT_DIR$/out/production/SistemaDeBanco/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SistemaDeBanco/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SistemaDeBanco/Model/BaseDeDadosModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SistemaDeBanco/Model/BaseDeDadosModel.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +113,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678369890605</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="automatizandoTeste">
+      <created>1678575768224</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1678575768224</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -136,6 +142,7 @@
     <MESSAGE value="teste" />
     <MESSAGE value="desingBotoes" />
     <MESSAGE value="desingBotoesAtualizacoes" />
-    <option name="LAST_COMMIT_MESSAGE" value="desingBotoesAtualizacoes" />
+    <MESSAGE value="automatizandoTeste" />
+    <option name="LAST_COMMIT_MESSAGE" value="automatizandoTeste" />
   </component>
 </project>

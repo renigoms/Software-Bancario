@@ -1,10 +1,3 @@
-import Controller.ClienteController;
-import Controller.DadosController;
-import Model.ClienteModel;
-import Model.ContaModel;
-import View.DepoisDoLogin.ExibirConta;
-import View.DepoisDoLogin.SistemaBancoView;
-import View.TelasDeCadastroELogin.CadastrarConta;
 import View.TelasDeCadastroELogin.FazerLoginView;
 
 import java.text.ParseException;
