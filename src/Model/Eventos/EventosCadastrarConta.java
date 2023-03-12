@@ -3,7 +3,6 @@ package Model.Eventos;
 import Controller.ClienteController;
 import Controller.ContaController;
 import Controller.DadosController;
-import Model.BaseDeDadosModel;
 import Model.Utilidadesv2;
 import View.TelasDeCadastroELogin.CadastrarCliente;
 import View.TelasDeCadastroELogin.CadastrarConta;
@@ -64,6 +63,19 @@ public class EventosCadastrarConta extends KeyAdapter implements ActionListener 
                         telaConta.tipoBox.getItemAt(telaConta.tipoBox.getSelectedIndex()),
                         saldoConvertido
                 );
+                // CORRER JUROS CASO CONTA POUPANÇA
+                if (conta.getConta().getTipo().equals("Poupança")){
+                    double rendimento = conta.getConta().renderJuros(0.0015);
+                    double rendeuQuant = rendimento - saldoConvertido;
+                    JOptionPane.showMessageDialog(null, "Seu saldo rendeu R$ "+rendeuQuant+" reais.");
+
+                }
+                // RENDER JUROS CASO CONTA CORRENTE
+                if (conta.getConta().getTipo().equals("Corrente")) {
+                    double rendimento = conta.getConta().correrJuros(0.03);
+                    double rendeuQuant = rendimento - saldoConvertido;
+                    JOptionPane.showMessageDialog(null, "Seu saldo correu R$ " + rendeuQuant + " reais.");
+                }
                 cliente.getCliente().setconta(conta.getConta());
 //                VERIFICAR SE O CLIENTE JÁ FOI CADASTRADO ANTES
                 if (DadosController.buscar(telaCliente.cpfText.getText()) != null)

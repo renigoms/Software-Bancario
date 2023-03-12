@@ -4,7 +4,6 @@ import Controller.DadosController;
 import Controller.EventosController;
 import Controller.EventosPosLoginController;
 import Model.ClienteModel;
-import Model.EventosPosLogin.FocusEventos;
 import Model.Utilidadesv2;
 import View.UtilidadesView;
 
@@ -19,7 +18,7 @@ import java.text.ParseException;
 public class RemoverUsuario{
     private static JPanel painelRemover;
 
-    private static JLabel imagem,mensagem,tituloLabel, querRemover;
+    private static JLabel imagem,mensagem,tituloLabel, querRemover, imagem2;
 
     public static ClienteModel cliente;
 
@@ -63,6 +62,11 @@ public class RemoverUsuario{
         imagem = new JLabel(new ImageIcon("1802328v3.png"));
         imagem.setBounds(20,0,195,72);
         painelRemover.add(imagem);
+
+        // ICONE DE LATA DE LIXO
+        imagem2 = new JLabel(new ImageIcon("216658.png"));
+        imagem2.setBounds(80,260, 160,180);
+        painelRemover.add(imagem2);
 //            LABELS
         tituloLabel = utilidadesView.getLabels("Banco Renan", Color.BLACK,110,15,280,50);
         tituloLabel.setFont(new Font("Arial", Font.BOLD, 32));
@@ -70,7 +74,7 @@ public class RemoverUsuario{
         mensagem = utilidadesView.getLabels("Remover Usuário.",Color.DARK_GRAY,110,38,280,50);
         mensagem.setFont(new Font("Serif",Font.ITALIC, 16));
         painelRemover.add(mensagem);
-        querRemover = utilidadesView.getLabels("Quer remover essa conta ?", Color.BLACK,30,160,300,50);
+        querRemover = utilidadesView.getLabels("Quer remover essa conta ?", Color.BLACK,30,150,300,50);
         querRemover.setFont(new Font("Serif", Font.CENTER_BASELINE, 25));
         painelRemover.add(querRemover);
 //        JBUTTONS
