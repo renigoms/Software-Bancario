@@ -78,6 +78,10 @@ public class ExibirConta {
         tipoText.setEditable(false);
         tipoText.setText(cliente.getconta().getTipo());
 
+//        IMAGEM DE TESTE
+        JLabel imagemDecorativaMoedas = new JLabel(new ImageIcon("3945455-moedas-dinheiro-dolares-dinheiro-icone-gratis-vetor.png"));
+        imagemDecorativaMoedas.setBounds(5, 10,355,430);
+
         //        ADIÇÕES
         painelConta.add(numContaLabel);
         painelConta.add(numContaText);
@@ -87,6 +91,7 @@ public class ExibirConta {
         painelConta.add(tipoText);
         painelConta.add(saldoLabel);
         painelConta.add(saldoText);
+        painelConta.add(imagemDecorativaMoedas);
 
 
 

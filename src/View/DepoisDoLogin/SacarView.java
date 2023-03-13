@@ -14,7 +14,7 @@ public class SacarView {
 
     public static SistemaBancoView telaSistema;
 
-    public static JPanel painelSacar;
+    private static JPanel painelSacar;
 
     static String dispSaldo;
 
