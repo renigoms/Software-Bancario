@@ -97,6 +97,11 @@ public class SistemaBancoView extends TelaView {
         painelSacar = SacarView.getPainelSacar(null, 330,314, clienteModel, this);
         cardMenstre.add(painelSacar, "sacar");
 
+        // PAINEL DEPOSITAR
+
+        painelDepositar = DepositarView.getPainelDepositar(null, 330,314, this,clienteModel);
+        cardMenstre.add(painelDepositar, "depositar");
+
 //        SHOW
         add(cardMenstre, BorderLayout.CENTER);
 

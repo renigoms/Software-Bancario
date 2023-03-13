@@ -3,16 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="b45fd835-5396-4412-bd85-30b0f979da5b" name="Changes" comment="automatizandoTeste2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SistemaDeBanco/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SistemaDeBanco/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SistemaDeBanco/Model/ContaModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SistemaDeBanco/Model/ContaModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SistemaDeBanco/Model/Eventos/EventosCadastrarConta.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SistemaDeBanco/Model/Eventos/EventosCadastrarConta.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SistemaDeBanco/View/DepoisDoLogin/RemoverUsuario$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SistemaDeBanco/View/DepoisDoLogin/RemoverUsuario$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SistemaDeBanco/View/DepoisDoLogin/RemoverUsuario$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SistemaDeBanco/View/DepoisDoLogin/RemoverUsuario$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SistemaDeBanco/View/DepoisDoLogin/RemoverUsuario$EventoKeyRemover.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SistemaDeBanco/View/DepoisDoLogin/RemoverUsuario$EventoKeyRemover.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SistemaDeBanco/View/DepoisDoLogin/RemoverUsuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SistemaDeBanco/View/DepoisDoLogin/RemoverUsuario.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/ContaModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ContaModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Eventos/EventosCadastrarConta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Eventos/EventosCadastrarConta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/DepoisDoLogin/RemoverUsuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/DepoisDoLogin/RemoverUsuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/EventosPosLogin/ActionsEventos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/EventosPosLogin/ActionsEventos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/DepoisDoLogin/DepositarView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/DepoisDoLogin/DepositarView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/DepoisDoLogin/ExibirConta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/DepoisDoLogin/ExibirConta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/DepoisDoLogin/SacarView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/DepoisDoLogin/SacarView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/DepoisDoLogin/SistemaBancoView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/DepoisDoLogin/SistemaBancoView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
