@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b45fd835-5396-4412-bd85-30b0f979da5b" name="Changes" comment="automatizandoTeste2">
+    <list default="true" id="b45fd835-5396-4412-bd85-30b0f979da5b" name="Changes" comment="atualizacoes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/EventosPosLogin/ActionsEventos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/EventosPosLogin/ActionsEventos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SistemaDeBanco/View/DepoisDoLogin/DepositarView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SistemaDeBanco/View/DepoisDoLogin/DepositarView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SistemaDeBanco/View/DepoisDoLogin/ExibirConta.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SistemaDeBanco/View/DepoisDoLogin/ExibirConta.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SistemaDeBanco/View/DepoisDoLogin/SacarView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SistemaDeBanco/View/DepoisDoLogin/SacarView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/EventosPosLogin/KeyEventos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/EventosPosLogin/KeyEventos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/DepoisDoLogin/DepositarView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/DepoisDoLogin/DepositarView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/DepoisDoLogin/ExibirConta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/DepoisDoLogin/ExibirConta.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/DepoisDoLogin/SacarView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/DepoisDoLogin/SacarView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/DepoisDoLogin/SistemaBancoView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/DepoisDoLogin/SistemaBancoView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +140,28 @@
       <option name="project" value="LOCAL" />
       <updated>1678581584952</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="atualizacoes">
+      <created>1678713239647</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1678713239647</updated>
+    </task>
+    <task id="LOCAL-00010" summary="atualizacoes">
+      <created>1678713262989</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1678713262989</updated>
+    </task>
+    <task id="LOCAL-00011" summary="atualizacoes">
+      <created>1678713268605</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1678713268605</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -163,6 +185,7 @@
     <MESSAGE value="desingBotoesAtualizacoes" />
     <MESSAGE value="automatizandoTeste" />
     <MESSAGE value="automatizandoTeste2" />
-    <option name="LAST_COMMIT_MESSAGE" value="automatizandoTeste2" />
+    <MESSAGE value="atualizacoes" />
+    <option name="LAST_COMMIT_MESSAGE" value="atualizacoes" />
   </component>
 </project>

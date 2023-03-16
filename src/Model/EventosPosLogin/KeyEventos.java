@@ -1,11 +1,9 @@
 package Model.EventosPosLogin;
 
 import Model.Utilidadesv2;
-import View.DepoisDoLogin.ExibirInformacoes;
-import View.DepoisDoLogin.RemoverUsuario;
-import View.DepoisDoLogin.SacarView;
-import View.DepoisDoLogin.SistemaBancoView;
+import View.DepoisDoLogin.*;
 
+import javax.swing.event.MouseInputListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -49,6 +47,7 @@ public class KeyEventos extends KeyAdapter {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT){
             Utilidadesv2.passarFocu(telaSistema.removerButton, RemoverUsuario.cancelarButton);
             Utilidadesv2.passarFocu(telaSistema.exibirDadosButton, ExibirInformacoes.contaButton);
+            Utilidadesv2.passarFocu(telaSistema.adicionarButton, DepositarView.saldoText);
         }
         if (e.getKeyCode() == KeyEvent.VK_LEFT){
             Utilidadesv2.passarFocu(telaSistema.sacarButton, RemoverUsuario.simButton);
