@@ -61,7 +61,7 @@ public class SacarView {
         mensagem.setFont(new Font("Serif",Font.ITALIC, 16));
         painelSacar.add(mensagem);
 //      ÁREA DE INPUTS
-        saldoLabel = utilidades.getLabels("Saldo", null,105,160,90,90);
+        saldoLabel = utilidades.getLabels("Valor", null,105,160,90,90);
         saldoLabel.setFont(new Font("Serif", Font.PLAIN, 23));
         painelSacar.add(saldoLabel);
         saldoText = utilidades.getTextField(5,165,195,90,25);
