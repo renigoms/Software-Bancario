@@ -94,7 +94,7 @@ public class DepositarView {
                             .formatted(saldoText.getText()), "Informação",JOptionPane.INFORMATION_MESSAGE);
                     sistemaPrincipal.dispose();
                     try {
-                        new SistemaBancoView(cliente);
+                        new SistemaBancoView(cliente, sistemaPrincipal.primeBW);
                     } catch (ParseException ex) {
                         throw new RuntimeException(ex);
                     }
@@ -105,6 +105,10 @@ public class DepositarView {
         });
 //        AÇÃO SHOW
         painelDepositar.add(depositarButton);
+//         IMAGEM DECORATIVA
+        JLabel imagemDePorquinho = new JLabel(new ImageIcon("download.png"));
+        imagemDePorquinho.setBounds(115, 330, 120, 120);
+        painelDepositar.add(imagemDePorquinho);
     }
 
 //    TRATAMENTO DE EVENTO DAS AÇÕES DO TECLADO

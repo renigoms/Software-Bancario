@@ -3,11 +3,13 @@ package View.DepoisDoLogin;
 import Controller.EventosController;
 import Controller.EventosPosLoginController;
 import Model.ClienteModel;
+import Model.Utilidadesv2;
 import View.TelaView;
 import View.UtilidadesView;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.BufferedWriter;
 import java.text.ParseException;
 
 public class SistemaBancoView extends TelaView {
@@ -18,13 +20,16 @@ public class SistemaBancoView extends TelaView {
 
 
     public  JPanel cardMenstre, painelLogo, painelExibirInformacoes, painelConta,
-    painelRemover, painelSacar, painelDepositar;
+    painelRemover, painelSacar, painelDepositar, painelExtrato;
+
+    public BufferedWriter primeBW;
 
     UtilidadesView caixaDeFerramentas;
-    public SistemaBancoView(ClienteModel clienteModel) throws ParseException {
+    public SistemaBancoView(ClienteModel clienteModel, BufferedWriter BW ) throws ParseException {
 //    DEFINIÇÕES
         setSize(590,514);
         this.clienteModel = clienteModel;
+        primeBW = BW;
 //        LAYOUT
         SpringLayout layout = new SpringLayout();
 //    Painel1
@@ -94,13 +99,17 @@ public class SistemaBancoView extends TelaView {
         cardMenstre.add(painelRemover, "remover");
 
 //        PAINEL SACAR
-        painelSacar = SacarView.getPainelSacar(null, 330,314, clienteModel, this);
+        painelSacar = SacarView.getPainelSacar(null, 330,314, clienteModel, this, BW);
         cardMenstre.add(painelSacar, "sacar");
 
         // PAINEL DEPOSITAR
 
         painelDepositar = DepositarView.getPainelDepositar(null, 330,314, this,clienteModel);
         cardMenstre.add(painelDepositar, "depositar");
+
+//        PAINEL EXTRATO
+        painelExtrato = ExtratoView.getPainelExtrato(null, 330, 314, this, clienteModel);
+        cardMenstre.add(painelExtrato,"extrato");
 
 //        SHOW
         add(cardMenstre, BorderLayout.CENTER);
@@ -129,6 +138,7 @@ public class SistemaBancoView extends TelaView {
         extratoButton = new JButton("Extrato");
         extratoButton.setFont(new Font("Arial", Font.BOLD, 16));
         //         BOTÃO EXTRATO: EVENTOS
+        extratoButton.addActionListener(new EventosPosLoginController(this).actionsEventos());
         extratoButton.addKeyListener(new EventosPosLoginController(this).keyEventos());
         extratoButton.addMouseListener(new EventosController(extratoButton).eventosMouse());
         extratoButton.addFocusListener(new EventosPosLoginController(this, extratoButton).focusEventos());

@@ -2,9 +2,43 @@ package Model;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.*;
+import java.lang.constant.Constable;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Utilidadesv2 {
 
+//    ESCREVER ARQUIVO
+    public static BufferedWriter abrirAquivo(String nomeDoArquivo)  {
+        BufferedWriter escreverArqui = null;
+        try {
+            escreverArqui = new BufferedWriter(new FileWriter(nomeDoArquivo));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return escreverArqui;
+    }
+
+//    LER ARQUIVO
+
+    public static BufferedReader lerArquivos(String arquivo){
+        BufferedReader BR = null;
+        try {
+            BR = new BufferedReader(new FileReader(arquivo));
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return  BR;
+    }
+
+//    TRABALHANDO COM DATAS E HORAS
+    
+    public static Constable formatarDataEOUHora(String formatacao){
+        DateTimeFormatter formatar = DateTimeFormatter.ofPattern(formatacao);
+        LocalDateTime dateTime = LocalDateTime.now();
+        return formatar.format(dateTime);
+    }
 
 //    MUDA AS BORDAS DE UM CAMPO DOS TIPOS JTEXTFIELD, JFORMATTEDTEXTFIELD OU JPASSWORDFIRLD
     public static void mudarBordas(JFormattedTextField campo, Color cor1, Color cor2){

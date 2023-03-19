@@ -51,6 +51,13 @@ public class ActionsEventos implements ActionListener {
             c1.show(telaSistema.cardMenstre, "depositar");
         }
 
+//        BOTÃO EXTRATO
+
+        if (e.getSource() == telaSistema.extratoButton){
+            CardLayout c1 = (CardLayout) telaSistema.cardMenstre.getLayout();
+            c1.show(telaSistema.cardMenstre, "extrato");
+        }
+
 
     }
 }

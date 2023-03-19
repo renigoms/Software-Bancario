@@ -8,11 +8,14 @@ import View.UtilidadesView;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.lang.constant.Constable;
 import java.text.ParseException;
 
 public class SacarView {
 
-    public static SistemaBancoView telaSistema;
+    static SistemaBancoView telaSistema;
 
     private static JPanel painelSacar;
 
@@ -26,8 +29,12 @@ public class SacarView {
 
     static ClienteModel cliente;
 
-    public static JPanel getPainelSacar(LayoutManager layout,int x, int y, ClienteModel cli, SistemaBancoView sistema) {
+    static BufferedWriter primeBW;
+
+    public static JPanel getPainelSacar(LayoutManager layout,int x, int y, ClienteModel cli, SistemaBancoView sistema,
+                                        BufferedWriter BW) {
         telaSistema = sistema;
+        primeBW = BW;
         cliente = cli;
         setPainelSacar(layout,x,y);
         return painelSacar;
@@ -50,8 +57,6 @@ public class SacarView {
         dispSaldoLabel = utilidades.getLabels(dispSaldo, Color.blue, 50,80,250,100);
         dispSaldoLabel.setFont(new Font("Dialog",Font.BOLD, 14));
         painelSacar.add(dispSaldoLabel);
-
-
         //            LABELS
 //        TÍTULO
         tituloLabel = utilidades.getLabels("Banco Renan", Color.BLACK,110,15,280,50);
@@ -85,11 +90,27 @@ public class SacarView {
                 }else{
                     Double saldoConvert = Double.parseDouble(saldoText.getText());
                     if(cliente.getconta().sacar(saldoConvert)){
+//                        ADICIONANDO AO ARQUIVO
+                        Constable data = Utilidadesv2.formatarDataEOUHora("dd/MM/yyyy");
+                        Constable hora = Utilidadesv2.formatarDataEOUHora("HH:mm");
+//                        adiciona informações ao arquivo
+                        try {
+                            primeBW.write(data+"  R$ "+saldoText.getText()+" sacado. "+hora);
+                        } catch (IOException ex) {
+                            throw new RuntimeException(ex);
+                        }
+                        try {
+//                            fecha o arquivo
+                            primeBW.close();
+                        } catch (IOException ex) {
+                            throw new RuntimeException(ex);
+                        }
+//                        CONFIRMAÇÃO QUE TUDO DEU CERTO
                         JOptionPane.showMessageDialog(null, "O valor de R$ %s foi sacado com sucesso."
                                 .formatted(saldoText.getText()), "Informação",JOptionPane.INFORMATION_MESSAGE);
                         telaSistema.dispose();
                         try {
-                            new SistemaBancoView(cliente);
+                            new SistemaBancoView(cliente, primeBW);
                         } catch (ParseException ex) {
                             throw new RuntimeException(ex);
                         }
