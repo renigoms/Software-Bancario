@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.BufferedWriter;
 import java.text.ParseException;
 
 import static java.awt.Color.LIGHT_GRAY;
@@ -80,7 +81,9 @@ public class EventosLoginModel extends KeyAdapter implements ActionListener {
                         JOptionPane.showMessageDialog(null,"Sua senha foi definida e " +
                                 "seu cadastro foi confirmado.", "Bem vindo(a)", 1);
                         try {
-                            new SistemaBancoView(cliente);
+//                            abri o arquivo
+                            BufferedWriter BW = Utilidadesv2.abrirAquivo("arquiDeExtratos.txt");
+                            new SistemaBancoView(cliente, BW);
                         } catch (ParseException ex) {
                             throw new RuntimeException(ex);
                         }
@@ -90,7 +93,9 @@ public class EventosLoginModel extends KeyAdapter implements ActionListener {
                         if (cliente.getSenha().equals(telaLogin.senhaText.getText())){
                             JOptionPane.showMessageDialog(null,"seu cadastro foi confirmado.", "Bem vindo(a), de volta", 1);
                             try {
-                                new SistemaBancoView(cliente);
+//                                abre o arquivo
+                                BufferedWriter BW = Utilidadesv2.abrirAquivo("arquiDeExtratos.txt");
+                                new SistemaBancoView(cliente, BW);
                             } catch (ParseException ex) {
                                 throw new RuntimeException(ex);
                             }
