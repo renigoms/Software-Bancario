@@ -86,7 +86,7 @@ public class SacarView {
             public void actionPerformed(ActionEvent e) {
                 if (saldoText.getText().equals("")){
                     JOptionPane.showMessageDialog(null,"Você não disse o quanto quer sacar!", "Aviso"
-                    , JOptionPane.WARNING_MESSAGE);
+                            , JOptionPane.WARNING_MESSAGE);
                 }else{
                     Double saldoConvert = Double.parseDouble(saldoText.getText());
                     if(cliente.getconta().sacar(saldoConvert)){
@@ -96,12 +96,7 @@ public class SacarView {
 //                        adiciona informações ao arquivo
                         try {
                             primeBW.write(data+"  R$ "+saldoText.getText()+" sacado. "+hora);
-                        } catch (IOException ex) {
-                            throw new RuntimeException(ex);
-                        }
-                        try {
-//                            fecha o arquivo
-                            primeBW.close();
+                            primeBW.newLine();
                         } catch (IOException ex) {
                             throw new RuntimeException(ex);
                         }

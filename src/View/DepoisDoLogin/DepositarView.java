@@ -8,6 +8,9 @@ import View.UtilidadesView;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.lang.constant.Constable;
 import java.text.ParseException;
 
 public class DepositarView {
@@ -25,14 +28,16 @@ public class DepositarView {
     public static SistemaBancoView telaSistema;
 
     static String dispSaldo;
+    static  BufferedWriter primeBW;
 
     // VARIÁVEIS DA LOG0TIPO
-   static JLabel imagem, tituloLabel, mensagemLabel;
+    static JLabel imagem, tituloLabel, mensagemLabel;
 
     public static JPanel getPainelDepositar(LayoutManager layout, int x, int y, SistemaBancoView sistemBase,
-                                            ClienteModel pegarCliente) {
+                                            ClienteModel pegarCliente, BufferedWriter BW) {
         cliente = pegarCliente;
         sistemaPrincipal = sistemBase;
+        primeBW = BW;
         setPainelDepositar(layout, x, y);
         return painelDepositar;
     }
@@ -90,9 +95,17 @@ public class DepositarView {
                 }else{
                     double saldoConvert = Double.parseDouble(saldoText.getText());
                     cliente.getconta().depositar(saldoConvert);
+                    Constable data = Utilidadesv2.formatarDataEOUHora("dd/MM/yyyy");
+                    Constable hora = Utilidadesv2.formatarDataEOUHora("HH:mm");
                     JOptionPane.showMessageDialog(null, "O valor de R$ %s foi depositado com sucesso."
                             .formatted(saldoText.getText()), "Informação",JOptionPane.INFORMATION_MESSAGE);
                     sistemaPrincipal.dispose();
+                    try {
+                        primeBW.write(data+"  R$ "+saldoText.getText()+" depositado. "+hora);
+                        primeBW.newLine();
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
                     try {
                         new SistemaBancoView(cliente, sistemaPrincipal.primeBW);
                     } catch (ParseException ex) {

@@ -72,6 +72,11 @@ public class BaseDeDadosModel {
     public static boolean removerCliente(ClienteModel cliente){
         return DadosDoBanco.remove(cliente);
     }
+
+    public static boolean transferir(ClienteModel conta1, ClienteModel conta2, double valor){
+        return conta1.getconta().sacar(valor) && conta2.getconta().depositar(valor);
+
+    }
 //    public  static void atualizar(ClienteModel antigo, ClienteModel novo){}
 
 
