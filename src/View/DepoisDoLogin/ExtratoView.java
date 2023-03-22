@@ -1,23 +1,30 @@
 package View.DepoisDoLogin;
 
+import Controller.EventosController;
+import Controller.EventosPosLoginController;
 import Model.ClienteModel;
 import Model.Utilidadesv2;
 import View.UtilidadesView;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.text.ParseException;
 
 public class ExtratoView {
 
     private static JPanel painelExtrato;
 
-//    VARIÁVEIS DA LOGO
+    //    VARIÁVEIS DA LOGO
     static  JLabel imagemLabel, mensagemlabel, tituloLabel;
-// VARIÁVEIS DE SISTEMA
+    // VARIÁVEIS DE SISTEMA
     static  SistemaBancoView sistemaPrincipal;
     static ClienteModel cliente;
+
+    static JButton gerarExtrato;
 //    VARIAVEIS DA ÁREA DO TEXTO
 
     static  JTextArea areaDeTexto;
@@ -81,6 +88,35 @@ public class ExtratoView {
         }
 
         painelExtrato.add(areaDeTexto);
+
+        //            BOTÃO GERAR EXTRATO
+        gerarExtrato = new JButton("Gerar Extrato");
+        gerarExtrato.addMouseListener(new EventosController(gerarExtrato).eventosMouse());
+        gerarExtrato.addFocusListener(new EventosPosLoginController(gerarExtrato).focusEventos());
+        gerarExtrato.setBounds(80,438,171,30);
+        gerarExtrato.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (JOptionPane.showConfirmDialog(null, "Apatir daqui você não pode mais fazer " +
+                        "saque, trasações ou depositos. Quer continuar ?") == JOptionPane.YES_NO_OPTION){
+
+                    try {
+//                            fecha o arquivo
+                        sistemaPrincipal.primeBW.close();
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+
+                    sistemaPrincipal.dispose();
+                    try {
+                        new SistemaBancoView(sistemaPrincipal.clienteModel, sistemaPrincipal.primeBW);
+                    } catch (ParseException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+            }
+        });
+        painelExtrato.add(gerarExtrato);
 
 
     }

@@ -3,7 +3,6 @@ package View.DepoisDoLogin;
 import Controller.EventosController;
 import Controller.EventosPosLoginController;
 import Model.ClienteModel;
-import Model.Utilidadesv2;
 import View.TelaView;
 import View.UtilidadesView;
 
@@ -18,11 +17,12 @@ public class SistemaBancoView extends TelaView {
 
     public ClienteModel clienteModel;
 
+    public BufferedWriter primeBW;
+
+
 
     public  JPanel cardMenstre, painelLogo, painelExibirInformacoes, painelConta,
     painelRemover, painelSacar, painelDepositar, painelExtrato;
-
-    public BufferedWriter primeBW;
 
     UtilidadesView caixaDeFerramentas;
     public SistemaBancoView(ClienteModel clienteModel, BufferedWriter BW ) throws ParseException {
@@ -99,12 +99,12 @@ public class SistemaBancoView extends TelaView {
         cardMenstre.add(painelRemover, "remover");
 
 //        PAINEL SACAR
-        painelSacar = SacarView.getPainelSacar(null, 330,314, clienteModel, this, BW);
+        painelSacar = SacarView.getPainelSacar(null, 330,314, clienteModel, this ,BW);
         cardMenstre.add(painelSacar, "sacar");
 
         // PAINEL DEPOSITAR
 
-        painelDepositar = DepositarView.getPainelDepositar(null, 330,314, this,clienteModel);
+        painelDepositar = DepositarView.getPainelDepositar(null, 330,314, this,clienteModel,BW);
         cardMenstre.add(painelDepositar, "depositar");
 
 //        PAINEL EXTRATO

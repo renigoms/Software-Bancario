@@ -62,9 +62,9 @@ public class EventosLoginModel extends KeyAdapter implements ActionListener {
         if (e.getSource() == telaLogin.entrarButton){
 //            VERIFICADOR DE CAMPO VAZIO
 //            Exibe a seguinte mensagem se algum dos campos estiver vazio
-           telaLogin.campVazio.setVisible(
-                   telaLogin.loginText.getText().equals("   .   .   -  ") || telaLogin.senhaText.getText().equals("")
-           );
+            telaLogin.campVazio.setVisible(
+                    telaLogin.loginText.getText().equals("   .   .   -  ") || telaLogin.senhaText.getText().equals("")
+            );
 //           Mudar a cor da borda caso um dos camppos abaixo esteja vazia
 //            CAMPO LOGIN
             Utilidadesv2.mudarBordas(telaLogin.loginText, RED, LIGHT_GRAY);

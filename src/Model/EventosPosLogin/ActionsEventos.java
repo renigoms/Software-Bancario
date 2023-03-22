@@ -6,6 +6,7 @@ import View.DepoisDoLogin.SistemaBancoView;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class ActionsEventos implements ActionListener {
     SistemaBancoView telaSistema;
@@ -56,6 +57,7 @@ public class ActionsEventos implements ActionListener {
         if (e.getSource() == telaSistema.extratoButton){
             CardLayout c1 = (CardLayout) telaSistema.cardMenstre.getLayout();
             c1.show(telaSistema.cardMenstre, "extrato");
+
         }
 
 
