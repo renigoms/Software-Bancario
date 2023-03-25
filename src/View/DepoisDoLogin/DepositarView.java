@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.constant.Constable;
 import java.text.ParseException;
@@ -25,19 +26,15 @@ public class DepositarView {
 
     public static JTextField saldoText;
 
-    public static SistemaBancoView telaSistema;
-
     static String dispSaldo;
-    static  BufferedWriter primeBW;
 
     // VARIÁVEIS DA LOG0TIPO
     static JLabel imagem, tituloLabel, mensagemLabel;
 
     public static JPanel getPainelDepositar(LayoutManager layout, int x, int y, SistemaBancoView sistemBase,
-                                            ClienteModel pegarCliente, BufferedWriter BW) {
+                                            ClienteModel pegarCliente) {
         cliente = pegarCliente;
         sistemaPrincipal = sistemBase;
-        primeBW = BW;
         setPainelDepositar(layout, x, y);
         return painelDepositar;
     }
@@ -97,18 +94,18 @@ public class DepositarView {
                     cliente.getconta().depositar(saldoConvert);
                     Constable data = Utilidadesv2.formatarDataEOUHora("dd/MM/yyyy");
                     Constable hora = Utilidadesv2.formatarDataEOUHora("HH:mm");
+                    String info = data+"  R$ "+saldoText.getText()+" depositado. "+hora;
+                    try {
+                        Utilidadesv2.LerEscrever("arquiDeExtratos.txt", info);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
                     JOptionPane.showMessageDialog(null, "O valor de R$ %s foi depositado com sucesso."
                             .formatted(saldoText.getText()), "Informação",JOptionPane.INFORMATION_MESSAGE);
                     sistemaPrincipal.dispose();
                     try {
-                        primeBW.write(data+"  R$ "+saldoText.getText()+" depositado. "+hora);
-                        primeBW.newLine();
-                    } catch (IOException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                    try {
-                        new SistemaBancoView(cliente, sistemaPrincipal.primeBW);
-                    } catch (ParseException ex) {
+                        new SistemaBancoView(cliente);
+                    } catch (FileNotFoundException | ParseException ex) {
                         throw new RuntimeException(ex);
                     }
 

@@ -1,18 +1,14 @@
 package View.DepoisDoLogin;
 
-import Controller.EventosController;
-import Controller.EventosPosLoginController;
 import Model.ClienteModel;
-import Model.Utilidadesv2;
 import View.UtilidadesView;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
-import java.text.ParseException;
 
 public class ExtratoView {
 
@@ -30,7 +26,7 @@ public class ExtratoView {
     static  JTextArea areaDeTexto;
 
     public static JPanel getPainelExtrato(LayoutManager layout, int x, int y, SistemaBancoView sistemPrincipal,
-                                          ClienteModel getCliente) {
+                                          ClienteModel getCliente) throws FileNotFoundException {
         cliente = getCliente;
         sistemaPrincipal = sistemPrincipal;
 
@@ -42,7 +38,7 @@ public class ExtratoView {
         areaDeTexto.append(texto+"\n");
     }
 
-    private static void setPainelExtrato(LayoutManager layout, int x, int y) {
+    private static void setPainelExtrato(LayoutManager layout, int x, int y) throws FileNotFoundException {
 //        CORPO DO PAINEL
         UtilidadesView caixaDeFerramentas = new UtilidadesView();
         painelExtrato = caixaDeFerramentas.getPainel(layout, x, y);
@@ -70,7 +66,7 @@ public class ExtratoView {
         areaDeTexto = new JTextArea();
         areaDeTexto.setBounds(20,110,290,320);
 //        ADICIONAR NA ÁREA DE TEXTO
-        BufferedReader BR = Utilidadesv2.lerArquivos("arquiDeExtratos.txt");
+        BufferedReader BR = new BufferedReader(new FileReader("arquiDeExtratos.txt"));
         while (true){
             try {
                 if (!BR.ready()) break;
@@ -88,35 +84,6 @@ public class ExtratoView {
         }
 
         painelExtrato.add(areaDeTexto);
-
-        //            BOTÃO GERAR EXTRATO
-        gerarExtrato = new JButton("Gerar Extrato");
-        gerarExtrato.addMouseListener(new EventosController(gerarExtrato).eventosMouse());
-        gerarExtrato.addFocusListener(new EventosPosLoginController(gerarExtrato).focusEventos());
-        gerarExtrato.setBounds(80,438,171,30);
-        gerarExtrato.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (JOptionPane.showConfirmDialog(null, "Apatir daqui você não pode mais fazer " +
-                        "saque, trasações ou depositos. Quer continuar ?") == JOptionPane.YES_NO_OPTION){
-
-                    try {
-//                            fecha o arquivo
-                        sistemaPrincipal.primeBW.close();
-                    } catch (IOException ex) {
-                        throw new RuntimeException(ex);
-                    }
-
-                    sistemaPrincipal.dispose();
-                    try {
-                        new SistemaBancoView(sistemaPrincipal.clienteModel, sistemaPrincipal.primeBW);
-                    } catch (ParseException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                }
-            }
-        });
-        painelExtrato.add(gerarExtrato);
 
 
     }

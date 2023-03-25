@@ -1,5 +1,6 @@
 package Model.EventosPosLogin;
 
+import Model.Utilidadesv2;
 import View.DepoisDoLogin.RemoverUsuario;
 import View.DepoisDoLogin.SistemaBancoView;
 
@@ -22,6 +23,11 @@ public class ActionsEventos implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 //        BOTÃO SAIR
         if (e.getSource() ==  telaSistema.sairButtton){
+            try {
+                Utilidadesv2.limparArquivo("arquiDeExtratos.txt");
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
             telaSistema.dispose();
         }
 //        BOTÃO EXIBIR
