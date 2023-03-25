@@ -6,41 +6,46 @@ import java.io.*;
 import java.lang.constant.Constable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 public class Utilidadesv2 {
 
-//    ESCREVER ARQUIVO
-    public static BufferedWriter abrirAquivo(String nomeDoArquivo)  {
-        BufferedWriter escreverArqui = null;
-        try {
-            escreverArqui = new BufferedWriter(new FileWriter(nomeDoArquivo));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+    //    ESCREVER E LER ARQUIVO
+    public static void LerEscrever(String arquivo, String info) throws IOException {
+        BufferedReader lerArquivo = new BufferedReader(new FileReader(arquivo));
+        ArrayList<String>linhas = new ArrayList<>();
+        while (lerArquivo.ready()){
+            String linha = lerArquivo.readLine();
+            linhas.add(linha);
+
         }
-        return escreverArqui;
+        lerArquivo.close();
+        BufferedWriter escreverArquivo =  new BufferedWriter(new FileWriter(arquivo));
+        for(String l : linhas){
+            escreverArquivo.write(l);
+            escreverArquivo.newLine();
+        }
+        escreverArquivo.write(info);
+        escreverArquivo.newLine();
+        escreverArquivo.close();
     }
 
-//    LER ARQUIVO
+//    EXCLUIR ARQUIVO
 
-    public static BufferedReader lerArquivos(String arquivo){
-        BufferedReader BR = null;
-        try {
-            BR = new BufferedReader(new FileReader(arquivo));
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        return  BR;
+    public static void limparArquivo(String arquivo) throws IOException {
+        RandomAccessFile limpArqui = new RandomAccessFile(arquivo, "rwd");
+        limpArqui.setLength(0);
     }
 
-//    TRABALHANDO COM DATAS E HORAS
-    
+//    TRABALHANDO COM DATAS E HORAS ATUAIS
+
     public static Constable formatarDataEOUHora(String formatacao){
         DateTimeFormatter formatar = DateTimeFormatter.ofPattern(formatacao);
         LocalDateTime dateTime = LocalDateTime.now();
         return formatar.format(dateTime);
     }
 
-//    MUDA AS BORDAS DE UM CAMPO DOS TIPOS JTEXTFIELD, JFORMATTEDTEXTFIELD OU JPASSWORDFIRLD
+    //    MUDA AS BORDAS DE UM CAMPO DOS TIPOS JTEXTFIELD, JFORMATTEDTEXTFIELD OU JPASSWORDFIRLD
     public static void mudarBordas(JFormattedTextField campo, Color cor1, Color cor2){
         if (campo.getText().equals("   .   .   -  ") || campo.getText().equals("(  )     -    ")){
             campo.setBorder(BorderFactory.createLineBorder(cor1));
@@ -141,7 +146,7 @@ public class Utilidadesv2 {
             campoSemFoco.requestFocus();
         }
     }
-//    DAR UM CLICK
+    //    DAR UM CLICK
     public static void  darUmCLick(JButton campoComFoco, JButton campoSemFoco){
         if (campoComFoco.isFocusOwner()){
             campoSemFoco.doClick();

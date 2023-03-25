@@ -9,6 +9,7 @@ import View.UtilidadesView;
 import javax.swing.*;
 import java.awt.*;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
 import java.text.ParseException;
 
 public class SistemaBancoView extends TelaView {
@@ -17,19 +18,16 @@ public class SistemaBancoView extends TelaView {
 
     public ClienteModel clienteModel;
 
-    public BufferedWriter primeBW;
-
 
 
     public  JPanel cardMenstre, painelLogo, painelExibirInformacoes, painelConta,
-    painelRemover, painelSacar, painelDepositar, painelExtrato;
+            painelRemover, painelSacar, painelDepositar, painelExtrato;
 
     UtilidadesView caixaDeFerramentas;
-    public SistemaBancoView(ClienteModel clienteModel, BufferedWriter BW ) throws ParseException {
+    public SistemaBancoView(ClienteModel clienteModel) throws ParseException, FileNotFoundException {
 //    DEFINIÇÕES
         setSize(590,514);
         this.clienteModel = clienteModel;
-        primeBW = BW;
 //        LAYOUT
         SpringLayout layout = new SpringLayout();
 //    Painel1
@@ -99,12 +97,12 @@ public class SistemaBancoView extends TelaView {
         cardMenstre.add(painelRemover, "remover");
 
 //        PAINEL SACAR
-        painelSacar = SacarView.getPainelSacar(null, 330,314, clienteModel, this ,BW);
+        painelSacar = SacarView.getPainelSacar(null, 330,314, clienteModel, this);
         cardMenstre.add(painelSacar, "sacar");
 
         // PAINEL DEPOSITAR
 
-        painelDepositar = DepositarView.getPainelDepositar(null, 330,314, this,clienteModel,BW);
+        painelDepositar = DepositarView.getPainelDepositar(null, 330,314, this,clienteModel);
         cardMenstre.add(painelDepositar, "depositar");
 
 //        PAINEL EXTRATO

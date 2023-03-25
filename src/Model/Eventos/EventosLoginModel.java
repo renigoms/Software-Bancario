@@ -12,7 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
 import java.text.ParseException;
 
 import static java.awt.Color.LIGHT_GRAY;
@@ -59,7 +59,7 @@ public class EventosLoginModel extends KeyAdapter implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 //        ENTRAR
-        if (e.getSource() == telaLogin.entrarButton){
+        if (e.getSource() == telaLogin.entrarButton) {
 //            VERIFICADOR DE CAMPO VAZIO
 //            Exibe a seguinte mensagem se algum dos campos estiver vazio
             telaLogin.campVazio.setVisible(
@@ -69,51 +69,49 @@ public class EventosLoginModel extends KeyAdapter implements ActionListener {
 //            CAMPO LOGIN
             Utilidadesv2.mudarBordas(telaLogin.loginText, RED, LIGHT_GRAY);
 //            CAMPO SENHA
-            Utilidadesv2.mudarBordas(telaLogin.senhaText, RED,LIGHT_GRAY);
+            Utilidadesv2.mudarBordas(telaLogin.senhaText, RED, LIGHT_GRAY);
 //            LIBERA O ACESSO SE NENHUM CAMPO ESTIVER VAZIO
-            if(!telaLogin.campVazio.isVisible()){
+            if (!telaLogin.campVazio.isVisible()) {
 //                JOptionPane.showMessageDialog(null,"#SEMCAMPOSVAZIOS");
 //                VERIFICADOR DE LOGIN POR CPF
-                if(DadosController.buscar(telaLogin.loginText.getText()) != null){
+                if (DadosController.buscar(telaLogin.loginText.getText()) != null) {
                     ClienteModel cliente = DadosController.buscar(telaLogin.loginText.getText());
-                    if (cliente.getSenha() == null){
+                    if (cliente.getSenha() == null) {
                         cliente.setSenha(telaLogin.senhaText.getText());
-                        JOptionPane.showMessageDialog(null,"Sua senha foi definida e " +
+                        JOptionPane.showMessageDialog(null, "Sua senha foi definida e " +
                                 "seu cadastro foi confirmado.", "Bem vindo(a)", 1);
                         try {
-//                            abri o arquivo
-                            BufferedWriter BW = Utilidadesv2.abrirAquivo("arquiDeExtratos.txt");
-                            new SistemaBancoView(cliente, BW);
-                        } catch (ParseException ex) {
-                            throw new RuntimeException(ex);
+                            new SistemaBancoView(cliente);
+                        } catch (ParseException | FileNotFoundException ex) {
+                            throw new RuntimeException();
                         }
                         telaLogin.loginText.setText("");
                         telaLogin.senhaText.setText("");
-                    }else{
-                        if (cliente.getSenha().equals(telaLogin.senhaText.getText())){
-                            JOptionPane.showMessageDialog(null,"seu cadastro foi confirmado.", "Bem vindo(a), de volta", 1);
+                    } else {
+                        if (cliente.getSenha().equals(telaLogin.senhaText.getText())) {
+                            JOptionPane.showMessageDialog(null, "seu cadastro foi confirmado.",
+                                    "Bem vindo(a), de volta", 1);
                             try {
-//                                abre o arquivo
-                                BufferedWriter BW = Utilidadesv2.abrirAquivo("arquiDeExtratos.txt");
-                                new SistemaBancoView(cliente, BW);
-                            } catch (ParseException ex) {
-                                throw new RuntimeException(ex);
+                                new SistemaBancoView(cliente);
+                            } catch (ParseException | FileNotFoundException ex) {
+                                throw new RuntimeException();
                             }
                             telaLogin.loginText.setText("");
                             telaLogin.senhaText.setText("");
-                        }else{
+                        } else {
                             JOptionPane.showMessageDialog(null, "Senha incorreta!!", "AVISO", JOptionPane.WARNING_MESSAGE);
                         }
                     }
 
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(null, "Cliente não encontrado ou não cadastrado(a)");
                 }
                 telaLogin.loginText.setText("");
                 telaLogin.senhaText.setText("");
+
             }
         }
-//        NOVO CADASTRO
+        //        NOVO CADASTRO
         if (telaLogin.cadastrarButton.equals(e.getSource())) {
             try {
                 new CadastrarCliente();
@@ -121,11 +119,10 @@ public class EventosLoginModel extends KeyAdapter implements ActionListener {
                 throw new RuntimeException(ex);
             }
         }
-//        SAIR
+        //        SAIR
         if (e.getSource() == telaLogin.sairButton) {
             System.exit(0);
 
         }
-
     }
 }

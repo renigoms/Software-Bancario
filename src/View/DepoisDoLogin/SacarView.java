@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.constant.Constable;
 import java.text.ParseException;
@@ -29,12 +30,9 @@ public class SacarView {
 
     static ClienteModel cliente;
 
-    static BufferedWriter primeBW;
-
-    public static JPanel getPainelSacar(LayoutManager layout,int x, int y, ClienteModel cli, SistemaBancoView sistema,
-                                        BufferedWriter BW) {
+    public static JPanel getPainelSacar(LayoutManager layout,int x, int y, ClienteModel cli, SistemaBancoView sistema) {
         telaSistema = sistema;
-        primeBW = BW;
+
         cliente = cli;
         setPainelSacar(layout,x,y);
         return painelSacar;
@@ -94,9 +92,9 @@ public class SacarView {
                         Constable data = Utilidadesv2.formatarDataEOUHora("dd/MM/yyyy");
                         Constable hora = Utilidadesv2.formatarDataEOUHora("HH:mm");
 //                        adiciona informações ao arquivo
+                        String info = data+"  R$ "+saldoText.getText()+" sacado. "+hora;
                         try {
-                            primeBW.write(data+"  R$ "+saldoText.getText()+" sacado. "+hora);
-                            primeBW.newLine();
+                            Utilidadesv2.LerEscrever("arquiDeExtratos.txt", info);
                         } catch (IOException ex) {
                             throw new RuntimeException(ex);
                         }
@@ -105,8 +103,8 @@ public class SacarView {
                                 .formatted(saldoText.getText()), "Informação",JOptionPane.INFORMATION_MESSAGE);
                         telaSistema.dispose();
                         try {
-                            new SistemaBancoView(cliente, primeBW);
-                        } catch (ParseException ex) {
+                            new SistemaBancoView(cliente);
+                        } catch (FileNotFoundException | ParseException ex) {
                             throw new RuntimeException(ex);
                         }
                     }else{
