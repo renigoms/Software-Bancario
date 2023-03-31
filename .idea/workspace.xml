@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b45fd835-5396-4412-bd85-30b0f979da5b" name="Changes" comment="atualizacoes">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/arquiDeExtratos.txt" beforeDir="false" afterPath="$PROJECT_DIR$/arquiDeExtratos.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Eventos/EventosLoginModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Eventos/EventosLoginModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/EventosPosLogin/ActionsEventos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/EventosPosLogin/ActionsEventos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Utilidadesv2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Utilidadesv2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/DepoisDoLogin/DepositarView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/DepoisDoLogin/DepositarView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/DepoisDoLogin/ExtratoView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/DepoisDoLogin/ExtratoView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/DepoisDoLogin/SacarView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/DepoisDoLogin/SacarView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/DepoisDoLogin/SistemaBancoView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/DepoisDoLogin/SistemaBancoView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/AppController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
