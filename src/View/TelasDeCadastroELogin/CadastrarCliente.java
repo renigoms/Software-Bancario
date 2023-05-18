@@ -2,8 +2,6 @@ package View.TelasDeCadastroELogin;
 
 import Controller.EventosController;
 import Controller.EventosPosLoginController;
-import Model.Eventos.EventosMouse;
-import Model.EventosPosLogin.FocusEventos;
 import View.TelaView;
 import View.UtilidadesView;
 
