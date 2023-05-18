@@ -8,7 +8,6 @@ import View.UtilidadesView;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
 
@@ -21,7 +20,7 @@ public class SistemaBancoView extends TelaView {
 
 
     public  JPanel cardMenstre, painelLogo, painelExibirInformacoes, painelConta,
-            painelRemover, painelSacar, painelDepositar, painelExtrato;
+            painelRemover, painelSacar, painelDepositar, painelExtrato, painelEditar;
 
     UtilidadesView caixaDeFerramentas;
     public SistemaBancoView(ClienteModel clienteModel) throws ParseException, FileNotFoundException {
@@ -41,6 +40,7 @@ public class SistemaBancoView extends TelaView {
         atualizarButton.setFont(new Font("Arial", Font.BOLD, 16));
         //        BOTÃO ATUALIZAR: EVENTOS E REQUISIÇÃO DE FOCO
         atualizarButton.addKeyListener(new EventosPosLoginController(this).keyEventos());
+        atualizarButton.addActionListener(new EventosPosLoginController(this, atualizarButton).actionsEventos());
         atualizarButton.addFocusListener(new EventosPosLoginController(this, atualizarButton).focusEventos());
         atualizarButton.addMouseListener(new EventosController(atualizarButton).eventosMouse());
         atualizarButton.requestFocus();
@@ -108,6 +108,10 @@ public class SistemaBancoView extends TelaView {
 //        PAINEL EXTRATO
         painelExtrato = ExtratoView.getPainelExtrato(null, 330, 314, this, clienteModel);
         cardMenstre.add(painelExtrato,"extrato");
+
+//         PAINEL DE EDITAR
+        painelEditar = EditarView.getPainelConta(null, 330,314, clienteModel);
+        cardMenstre.add(painelEditar, "atualizarInformacoes");
 
 //        SHOW
         add(cardMenstre, BorderLayout.CENTER);

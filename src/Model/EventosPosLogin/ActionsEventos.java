@@ -66,6 +66,12 @@ public class ActionsEventos implements ActionListener {
 
         }
 
+//        BOTÃO ATUALIZAR INFORMAÇÕES
+        if(e.getSource() == telaSistema.atualizarButton){
+            CardLayout c1 = (CardLayout) telaSistema.cardMenstre.getLayout();
+            c1.show(telaSistema.cardMenstre, "atualizarInformacoes");
+        }
+
 
     }
 }

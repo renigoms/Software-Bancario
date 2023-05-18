@@ -1,6 +1,5 @@
 package View.DepoisDoLogin;
 
-import Controller.EventosController;
 import Model.ClienteModel;
 import View.UtilidadesView;
 
