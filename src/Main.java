@@ -1,5 +1,4 @@
 import Controller.AppController;
-import View.TelasDeCadastroELogin.FazerLoginView;
 
 import java.text.ParseException;
 
