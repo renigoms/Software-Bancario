@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b45fd835-5396-4412-bd85-30b0f979da5b" name="Changes" comment="AppController">
-      <change afterPath="$PROJECT_DIR$/src/View/DepoisDoLogin/EditarView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SistemaDeBanco/Model/EventosPosLogin/ActionsEventos.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SistemaDeBanco/Model/EventosPosLogin/ActionsEventos.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SistemaDeBanco/View/DepoisDoLogin/ExibirConta.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SistemaDeBanco/View/DepoisDoLogin/ExibirConta.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SistemaDeBanco/View/DepoisDoLogin/SistemaBancoView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SistemaDeBanco/View/DepoisDoLogin/SistemaBancoView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/EventosPosLogin/ActionsEventos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/EventosPosLogin/ActionsEventos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/DepoisDoLogin/ExibirConta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/DepoisDoLogin/ExibirConta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/DadosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DadosController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/BaseDeDadosModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/BaseDeDadosModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/DepoisDoLogin/EditarView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/DepoisDoLogin/EditarView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/DepoisDoLogin/SistemaBancoView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/DepoisDoLogin/SistemaBancoView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,20 +40,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/renan/Documents/arquivos curso de SI/3°PERÍODO/MODELAGEM E PROGRAMAÇÃO ORIENTADA A OBJETOS/br.edu.mpoo.listaVI.RenanNicolauGomes_v1",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/arquivos curso de SI/3°PERÍODO/MODELAGEM E PROGRAMAÇÃO ORIENTADA A OBJETOS/br.edu.mpoo.listaVI.RenanNicolauGomes_v2&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\renan\Documents\GitHub\SistemaDeBanco\src\Model\Eventos" />

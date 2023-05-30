@@ -110,7 +110,7 @@ public class SistemaBancoView extends TelaView {
         cardMenstre.add(painelExtrato,"extrato");
 
 //         PAINEL DE EDITAR
-        painelEditar = EditarView.getPainelConta(null, 330,314, clienteModel);
+        painelEditar = EditarView.getPainelConta(null, 330,314, clienteModel, this);
         cardMenstre.add(painelEditar, "atualizarInformacoes");
 
 //        SHOW

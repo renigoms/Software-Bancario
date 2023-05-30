@@ -1,12 +1,17 @@
 package View.DepoisDoLogin;
 
+import Controller.DadosController;
 import Controller.EventosController;
 import Controller.EventosPosLoginController;
+import Model.BaseDeDadosModel;
 import Model.ClienteModel;
 import View.UtilidadesView;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.text.ParseException;
 
 public class EditarView {
@@ -21,6 +26,8 @@ public class EditarView {
     static JLabel enderecoLabel;
     static JLabel telefoneLabel;
 
+    static SistemaBancoView telaSistema;
+
     static String[] nome;
 
     public static JTextField nomeText;
@@ -30,10 +37,11 @@ public class EditarView {
     public static JFormattedTextField cpfText;
     public static JFormattedTextField telefoneText;
 
-    public static JButton contaButton;
+    public static JButton contaButton, mudarSenhaButton;
 
-    public static JPanel getPainelConta(LayoutManager layout, int x, int y, ClienteModel cli) throws ParseException {
+    public static JPanel getPainelConta(LayoutManager layout, int x, int y, ClienteModel cli, SistemaBancoView sistema) throws ParseException {
         cliente = cli;
+        telaSistema = sistema;
         setPainelConta(layout, x, y);
         return painelConta;
     }
@@ -115,14 +123,93 @@ public class EditarView {
             painelConta.add(telefoneText);
         }
 
-        //        BOTÃO CONTA
+        //        BOTÃO ATUALIZAR
 
         contaButton = new JButton("Atualizar dados");
-        contaButton.setBounds(110,390,190,35);
+        contaButton.setBounds(110,375,190,35);
         contaButton.addMouseListener(new EventosController(contaButton).eventosMouse());
         contaButton.addFocusListener(new EventosPosLoginController(contaButton).focusEventos());
         contaButton.addKeyListener(new DepositarView.EventosKey());
+        contaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+//                NOME
+                String nome;
+                if (nomeText.getText().equals("")){
+                    nome = cliente.getNome();
+                }else{
+                    nome = nomeText.getText();
+                }
+//            CPF
+                String cpf;
+                if (cpfText.getText().equals("   .   .   -  ")){
+                    cpf = cliente.getCpf();
+                }else{
+                    cpf = cpfText.getText();
+                }
+//            TELEFONE
+                String telefone;
+                if(telefoneText.getText().equals("(  )     -    ")){
+                    telefone = cliente.getTelefone();
+                }else{
+                    telefone = telefoneText.getText();
+                }
+//            EMAIL
+                String email;
+                if (emailText.getText().equals("")){
+                    email = cliente.getEmail();
+                }else{
+                    email = emailText.getText();
+                }
+//                Endereço
+                String endereco;
+                if (enderecoText.getText().equals(""))
+                    endereco = cliente.getendereco();
+                else
+                    endereco = enderecoText.getText();
+
+                ClienteModel clienteDadosAlterados = new ClienteModel(nome, cpf, email, telefone, endereco);
+
+                DadosController.atualizarInformacoes(cliente, clienteDadosAlterados);
+
+                JOptionPane.showMessageDialog(null, "Informações recadastradas com sucesso");
+
+                telaSistema.dispose();
+                try {
+                    new SistemaBancoView(cliente);
+                } catch (FileNotFoundException | ParseException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
         painelConta.add(contaButton);
+
+//      BOTÃO MUDAR A SENHA
+
+        mudarSenhaButton = new JButton("Mudar Senha");
+        mudarSenhaButton.setBounds(110,420,190,35);
+        mudarSenhaButton.addMouseListener(new EventosController(mudarSenhaButton).eventosMouse());
+        mudarSenhaButton.addFocusListener(new EventosPosLoginController(mudarSenhaButton).focusEventos());
+        mudarSenhaButton.addKeyListener(new DepositarView.EventosKey());
+//        AÇÃO DO BOTÃO
+        mudarSenhaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String passWord, confirmarPassWord;
+
+                passWord = JOptionPane.showInputDialog(null, "Qual a nova senha ?");
+                confirmarPassWord = JOptionPane.showInputDialog(null, "Confirme a nova senha.");
+
+                if (passWord.equals(confirmarPassWord)) {
+                    DadosController.mudarSenha(confirmarPassWord, cliente);
+                    JOptionPane.showMessageDialog(null, "Senha mudada com sucesso.",
+                            "Informação", JOptionPane.INFORMATION_MESSAGE);
+                }else
+                    JOptionPane.showMessageDialog(null, "A senha não pode ser alterada, pois" +
+                            "a confirmação é diferente.", "ATENÇÃO", JOptionPane.ERROR_MESSAGE);
+            }
+        });
+        painelConta.add(mudarSenhaButton);
     }
 
 

@@ -5,6 +5,7 @@ import Controller.ContaController;
 import Controller.DadosController;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class BaseDeDadosModel {
 
@@ -36,7 +37,7 @@ public class BaseDeDadosModel {
     private static ClienteModel percorrerBanco(ArrayList<ClienteModel> bdBanco, int cont) {
         if (bdBanco.size() != 0 && bdBanco.size() > cont) {
             if (bdBanco.get(cont) != null) {
-                return ((ClienteModel) bdBanco.get(cont));
+                return (bdBanco.get(cont));
             }
         }
         return null;
@@ -77,7 +78,31 @@ public class BaseDeDadosModel {
         return conta1.getconta().sacar(valor) && conta2.getconta().depositar(valor);
 
     }
-//    public  static void atualizar(ClienteModel antigo, ClienteModel novo){}
+    public  static boolean atualizar(ClienteModel antigo, ClienteModel novo){
+        try{
+            antigo.setNome(novo.getNome());
+            antigo.setendereco(novo.getendereco());
+            antigo.setCpf(novo.getCpf());
+            antigo.setTelefone(novo.getTelefone());
+            antigo.setEmail(novo.getEmail());
+            antigo.setSenha(novo.getSenha());
+            return true;
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+    public static boolean mudarSenha(ClienteModel cliente, String senhaNova){
+        try{
+            cliente.setSenha(senhaNova);
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
 
 
 
