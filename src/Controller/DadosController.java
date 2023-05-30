@@ -18,4 +18,11 @@ public class DadosController {
     public static boolean removerUsuario(ClienteModel cliente){
         return BaseDeDadosModel.removerCliente(cliente);
     }
+    public static boolean atualizarInformacoes(ClienteModel clienteAntigo, ClienteModel clienteNovo){
+        return BaseDeDadosModel.atualizar(clienteAntigo, clienteNovo);
+    }
+
+    public static boolean mudarSenha(String novaSenha, ClienteModel cliente){
+        return BaseDeDadosModel.mudarSenha(cliente, novaSenha);
+    }
 }
